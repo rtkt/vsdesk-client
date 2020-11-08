@@ -4,6 +4,7 @@ const path = require("path");
 const url = require("url");
 const meow = require("meow");
 const csv = require("csv-parser");
+const client = require("./httpClient");
 
 const cli = meow(
   `
