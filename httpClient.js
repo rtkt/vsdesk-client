@@ -2,6 +2,18 @@ const https = require("https");
 const querystring = require("querystring");
 // eslint-disable-next-line no-unused-vars
 const url = require("url");
+const { cloneDeep } = require("lodash");
+const ids = require("./ids.json");
+
+function checkEntry(entry, url) {
+  const data = cloneDeep(entry);
+  if (url.pathname === "/api/assets") {
+    if (!data.asset_attrib_id) {
+      data.asset_attrib_id = ids.assets[data.asset_attrib_name];
+    }
+  }
+  return data;
+}
 
 function modifyURL(base, entry) {
   if (!entry.id)
@@ -12,8 +24,7 @@ function modifyURL(base, entry) {
 }
 
 function request(entry, url, method, creds) {
-  console.log(entry, url, method, creds);
-  const data = querystring.stringify(entry);
+  const data = querystring.stringify(checkEntry(entry, url));
   const options = {
     auth: `${creds.username}:${creds.password}`,
     hostname: url.hostname,
@@ -24,6 +35,8 @@ function request(entry, url, method, creds) {
     },
     path: method === "put" ? modifyURL(url, entry) : url,
   };
+  console.log(options);
+  console.log(checkEntry(entry, url));
   const req = https.request(options, (res) => {
     console.log(`STATUS: ${res.statusCode}`);
     console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
