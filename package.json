@@ -16,6 +16,7 @@
     "prettier": "2.1.2"
   },
   "dependencies": {
+    "csv-parser": "^2.3.3",
     "meow": "^8.0.0"
   },
   "eslintConfig": {
