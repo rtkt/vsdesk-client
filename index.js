@@ -55,4 +55,4 @@ const method = cli.flags.method;
 
 fs.createReadStream(dataFile)
   .pipe(csv())
-  .on("data", (data) => console.log(data));
+  .on("data", (data) => client.request(data, ApiURL, method, credentials));
