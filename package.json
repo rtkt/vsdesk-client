@@ -19,8 +19,8 @@
   },
   "eslintConfig": {
     "extends": [
-      "prettier",
-      "standard"
+      "standard",
+      "prettier"
     ],
     "ecmaFeatures": {
       "impliedStrict": true
