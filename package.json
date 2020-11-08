@@ -1,0 +1,9 @@
+{
+  "name": "vsDesk-client",
+  "version": "1.0.0",
+  "description": "vsDesk API client created primarily for adding and editing assets",
+  "main": "index.js",
+  "author": "rtkt <yetanotherinbox@list.ru>",
+  "license": "MIT",
+  "private": true
+}
