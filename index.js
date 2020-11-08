@@ -3,6 +3,7 @@ const path = require("path");
 // eslint-disable-next-line no-unused-vars
 const url = require("url");
 const meow = require("meow");
+const csv = require("csv-parser");
 
 const cli = meow(
   `
@@ -50,3 +51,7 @@ const credentials = {
 const dataFile = path.resolve(cli.flags.data);
 const ApiURL = new URL(cli.flags.url);
 const method = cli.flags.method;
+
+fs.createReadStream(dataFile)
+  .pipe(csv())
+  .on("data", (data) => console.log(data));
