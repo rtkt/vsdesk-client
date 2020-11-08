@@ -1,3 +1,7 @@
+const fs = require("fs");
+const path = require("path");
+// eslint-disable-next-line no-unused-vars
+const url = require("url");
 const meow = require("meow");
 
 const cli = meow(
@@ -38,3 +42,11 @@ if (!process.env.VSDESK_USERNAME || !process.env.VSDESK_PASSWORD)
 
 if (cli.flags.method !== "put" && cli.flags.method !== "post")
   throw new Error("Wrong method type. It must be either 'post' or 'put'");
+
+const credentials = {
+  username: process.env.VSDESK_USERNAME,
+  password: process.env.VSDESK_PASSWORD,
+};
+const dataFile = path.resolve(cli.flags.data);
+const ApiURL = new URL(cli.flags.url);
+const method = cli.flags.method;
