@@ -4,6 +4,7 @@ const path = require("path");
 const url = require("url");
 const meow = require("meow");
 const csv = require("csv-parser");
+const parser = require("./parser");
 const client = require("./httpClient");
 
 const cli = meow(
@@ -55,4 +56,6 @@ const method = cli.flags.method;
 
 fs.createReadStream(dataFile)
   .pipe(csv())
-  .on("data", (data) => client.request(data, ApiURL, method, credentials));
+  .on("data", (data) =>
+    client.request(parser.checkEntry(data, ApiURL), ApiURL, method, credentials)
+  );
