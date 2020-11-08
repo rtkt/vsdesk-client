@@ -4,7 +4,7 @@ const cli = meow(
   `
   Usage:
     --data, -d  Path to the CSV file with data that will be uploaded
-    --url, -s  URL to submit data to. If HTTP PUT method is used then ID is added to this string
+    --url, -u  URL to submit data to. If HTTP PUT method is used then ID is added to this string
     --method, -m  HTTP method to use when sending data to the server. It should be either 'post' or 'put'. The latter is default
 
   The first two command-line options are required. You also need to set VSDESK_USERNAME and VSDESK_PASSWORD environment variables for this script to work.
@@ -16,9 +16,9 @@ const cli = meow(
         alias: "d",
         isRequired: true,
       },
-      server: {
+      url: {
         type: "string",
-        alias: "s",
+        alias: "u",
         isRequired: true,
       },
       method: {
