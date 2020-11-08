@@ -19,7 +19,6 @@
       "prettier",
       "standard"
     ],
-    "sourceType": "module",
     "ecmaFeatures": {
       "impliedStrict": true
     },
