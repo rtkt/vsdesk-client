@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "csv-parser": "^2.3.3",
+    "lodash": "^4.17.20",
     "meow": "^8.0.0"
   },
   "eslintConfig": {
